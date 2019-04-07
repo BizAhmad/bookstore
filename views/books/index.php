@@ -3,10 +3,10 @@
 	<?php endif; ?>
 	<?php foreach($viewmodel as $item) : ?>
 		<div class="well">
-			<h3><?php echo $item['isbn']; ?></h3>
-			<small><?php echo $item['title']; ?></small>
-			<hr />
-			<p><?php echo $item['edition']; ?></p>
+			<h3><?php echo $item['title']; ?></h3>
+			<label> ISBN: <?php echo $item['isbn']; ?></label>
+			<br>
+			<label> Quantity: <?php echo $item['edition']; ?> </label>
 			<br />
 			<a class="btn btn-default" href="<?php echo $item['link']; ?>" target="_blank">Go To Website</a>
 		</div>

@@ -4,6 +4,11 @@
   </div>
   <div class="panel-body">
     <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+			<div class="form-group">
+				<h5>Register as: </h5>
+				<label><input type="radio" name="type" value="employee" required> Employee </label><br> 
+				<label><input type="radio" name="type" value="customer"> Customer </label> <br>
+			</div>
     	<div class="form-group">
     		<label>Username</label>
     		<input type="text" name="username" class="form-control" />

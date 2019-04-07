@@ -2,12 +2,31 @@
 class Users extends Controller{
 	protected function register(){
 		$viewmodel = new UserModel();
-		$this->returnView($viewmodel->register(), true);
-	}
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if ($post['submit']){
+            if ($post['type'] == 'customer') {
+                $this->returnView($viewmodel->registerCustomer(), true);
+            }
+            else {
+                $this->returnView($viewmodel->registerEmployee(), true);
+            }
+            
+        }
+        $this->returnView($viewmodel->registerEmployee(), true);
+    }
 
 	protected function login(){
 		$viewmodel = new UserModel();
-		$this->returnView($viewmodel->login(), true);
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+		if ($post['submit']){
+            if ($post['type'] == 'customer') {
+                $this->returnView($viewmodel->signinCustomer(), true);
+            }
+            else {
+                $this->returnView($viewmodel->signinEmployee(), true);
+            }
+        }
+        $this->returnView($viewmodel->signinEmployee(), true);
 	}
 
 	protected function logout(){
