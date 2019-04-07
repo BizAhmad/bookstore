@@ -7,15 +7,14 @@ class UserModel extends Model{
 		$password = md5($post['password']);
 
 		if($post['submit']){
-			if($post['name'] == '' || $post['email'] == '' || $post['password'] == ''){
+			if($post['username'] == '' || $post['password'] == ''){
 				Messages::setMsg('Please Fill In All Fields', 'error');
 				return;
 			}
 
 			// Insert into MySQL
-			$this->query('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
-			$this->bind(':name', $post['name']);
-			$this->bind(':email', $post['email']);
+			$this->query('INSERT INTO Employee (username, password) VALUES(:username, :password)');
+			$this->bind(':username', $post['username']);
 			$this->bind(':password', $password);
 			$this->execute();
 			// Verify
@@ -35,8 +34,8 @@ class UserModel extends Model{
 
 		if($post['submit']){
 			// Compare Login
-			$this->query('SELECT * FROM users WHERE email = :email AND password = :password');
-			$this->bind(':email', $post['email']);
+			$this->query('SELECT * FROM Employee WHERE username = :username AND password = :password');
+			$this->bind(':username', $post['username']);
 			$this->bind(':password', $password);
 			
 			$row = $this->single();
@@ -45,8 +44,7 @@ class UserModel extends Model{
 				$_SESSION['is_logged_in'] = true;
 				$_SESSION['user_data'] = array(
 					"id"	=> $row['id'],
-					"name"	=> $row['name'],
-					"email"	=> $row['email']
+					"full_name"	=> $row['full_name']
 				);
 				header('Location: '.ROOT_URL.'shares');
 			} else {

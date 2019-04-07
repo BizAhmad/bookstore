@@ -5,12 +5,8 @@
   <div class="panel-body">
     <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
     	<div class="form-group">
-    		<label>Name</label>
-    		<input type="text" name="name" class="form-control" />
-    	</div>
-    	<div class="form-group">
-    		<label>Email</label>
-    		<input type="text" name="email" class="form-control" />
+    		<label>Username</label>
+    		<input type="text" name="username" class="form-control" />
     	</div>
     	<div class="form-group">
     		<label>Password</label>
