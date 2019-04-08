@@ -10,7 +10,6 @@ class Users extends Controller{
             else {
                 $this->returnView($viewmodel->registerEmployee(), true);
             }
-            
         }
         $this->returnView($viewmodel->registerEmployee(), true);
     }
@@ -32,8 +31,14 @@ class Users extends Controller{
 	protected function logout(){
 		unset($_SESSION['is_logged_in']);
 		unset($_SESSION['user_data']);
+		unset($_SESSION['cart']);
 		session_destroy();
 		// Redirect
 		header('Location: '.ROOT_URL);
 	}
+	
+	protected function viewOrders() {
+	    $viewmodel = new UserModel();
+	    $this->returnView($viewmodel->fetchUserOrders(), true);
+    }
 }

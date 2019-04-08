@@ -63,17 +63,16 @@ class UserModel extends Model{
 			$this->query('SELECT * FROM Employee WHERE username = :username AND password = :password');
 			$this->bind(':username', $post['username']);
 			$this->bind(':password', $password);
-			
 			$row = $this->single();
 
 			if($row){
 				$_SESSION['is_logged_in'] = true;
 				$_SESSION['user_data'] = array(
 					"id"	=> $row['id'],
-					"full_name"	=> $row['full_name'],
-                    "type" => "e"
+					"username"	=> $row['username'],
+                    "type" => "e",
 				);
-				header('Location: '.ROOT_URL.'books');
+				header('Location: '.ROOT_URL.'home/employeeHome');
 			} else {
 				Messages::setMsg('Incorrect Login', 'error');
 			}
@@ -108,5 +107,9 @@ class UserModel extends Model{
             }
         }
         return;
+    }
+    
+    public function fetchUserOrders(){
+	    return;
     }
 }
