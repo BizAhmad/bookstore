@@ -9,7 +9,7 @@
             <th width="10%">Total Price</th>
             <th width="17%">Remove Item</th>
         </tr>
-				<?php
+        <?php
         if (isset($_GET["delete"])){
             foreach ($_SESSION["cart"] as $k => $v){
                 if ($v["product_id"] == $_GET["product_id"]){
@@ -17,7 +17,7 @@
                 }
             }
         }
-				?>
+        ?>
 
         <?php
         if(!empty($_SESSION["cart"])){
@@ -30,8 +30,8 @@
                     <td>$ <?php echo $value["product_price"]; ?></td>
                     <td>$ <?php echo number_format(1 * $value["product_price"], 2); ?></td>
                     <td>
-											<a class="btn btn-primary text-center"
-												 href="?delete<?= $value['product_id']?>"><span >Remove Item</span></a></td>
+                        <a class="btn btn-primary text-center"
+                           href="?delete<?= $value['product_id']?>"><span >Remove Item</span></a></td>
                 </tr>
                 <?php $total = $total + (1 * $value["product_price"]);
             }
@@ -45,5 +45,5 @@
         }
         ?>
     </table>
-	<a class="btn btn-primary text-center" href="completeOrder"> Finalize Order</a>
+    <a class="btn btn-primary text-center" href="completeCart"> Finalize Cart Order</a>
 </div>

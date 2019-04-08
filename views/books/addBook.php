@@ -28,6 +28,10 @@
                 <label>author</label>
                 <input type="text" name="author" class="form-control" />
             </div>
+						<div class="form-group">
+                <label>publisher ID</label>
+                <input type="text" name="publisher_id" class="form-control" />
+            </div>
             <input class="btn btn-primary" name="submit" type="submit" value="Submit" />
             <a class="btn btn-danger" href="<?php echo ROOT_PATH; ?>shares">Cancel</a>
         </form>

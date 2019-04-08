@@ -21,8 +21,9 @@
             <?php if(isset($_SESSION['is_logged_in'])) : ?>
 							<?php if(($_SESSION['user_data']['type'] == 'e')) : ?>
 								<li><a href="<?php echo ROOT_URL; ?>home/employeeHome">Home</a></li>
-							<?php endif; ?>
+							<?php elseif (($_SESSION['user_data']['type'] == 'c')) : ?>
 						<li><a href="<?php echo ROOT_URL; ?>home/customerHome">Home</a></li>
+						<?php endif;?>
 						<?php endif;?>
           </ul>
 
@@ -31,9 +32,9 @@
               <?php if(($_SESSION['user_data']['type'] == 'e')) : ?>
             		<li><a href="<?php echo ROOT_URL; ?>">Welcome <?php echo $_SESSION['user_data']['username']; ?></a></li>
             		<li><a href="<?php echo ROOT_URL; ?>users/logout">Logout</a></li>
-								<li><a href="<?php echo ROOT_URL; ?>users/employeeCart">Cart</a></li>
+								<li><a href="<?php echo ROOT_URL; ?>books/employeeCart">Cart</a></li>
 							<?php else: ?>
-								<li><a href="<?php echo ROOT_URL; ?>users/costumerCart">Cart</a></li>
+								<li><a href="<?php echo ROOT_URL; ?>books/customerCart">Cart</a></li>
 							<?php endif; ?>
           <?php else : ?>
             <li><a href="<?php echo ROOT_URL; ?>users/login">Login</a></li>

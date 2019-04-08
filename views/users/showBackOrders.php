@@ -12,8 +12,7 @@
                         'product_id' => $item["isbn"],
                         'item_name' => $item["title"],
                         'product_price' => $item["price"],
-												'publisher_id' => $item["publisher_id"],
-                        'quantity_available' => $item['quantity_on_hand'],
+                        'available_quantity' => $item["quantity_on_hand"],
                         'ytd' => $item['year_to_date_quantity_sold'],
                     );
                     $_SESSION["cart"][$count] =(array) $item_array;
@@ -23,21 +22,24 @@
                     'product_id' => $item["isbn"],
                     'item_name' => $item["title"],
                     'product_price' => $item["price"],
-                    'publisher_id' => $item["publisher_id"],
-										'quantity_available' => $item['quantity_on_hand'],
-										'ytd' => $item['year_to_date_quantity_sold'],
+                    'available_quantity' => $item["quantity_on_hand"],
+                    'ytd' => $item['year_to_date_quantity_sold'],
                 );
                 $_SESSION["cart"][0] = $item_array;
             }
         }
         ?>
-			<div class="well">
-				<h3><?php echo $item['title']; ?></h3>
-				<label> ISBN: <?php echo $item['isbn']; ?></label>
-				<br>
-				<label> Quantity: <?php echo $item['quantity_on_hand']; ?> </label>
-				<br />
-				<a class="btn btn-primary text-center" href="?add=<?= $item['isbn'] ?>"> Add To Cart</a>
-			</div>
+    
+        <?php if ($item['quantity_on_hand'] == 0) :?>
+        <div class="well">
+            
+            <h3><?php echo $item['title']; ?></h3>
+                <label> ISBN: <?php echo $item['isbn']; ?></label>
+                <br>
+                <label> Quantity: <?php echo $item['quantity_on_hand']; ?> </label>
+                <br />
+                <a class="btn btn-primary text-center" href="?add=<?= $item['isbn'] ?>"> Add To Order</a>
+            <?php endif;?>
+        </div>
     <?php endforeach; ?>
 </div>

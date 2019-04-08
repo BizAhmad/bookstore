@@ -49,4 +49,20 @@ class Books extends Controller{
 	    $viewModel = new BookModel();
 	    $this->returnView($viewModel->viewCart(), true);
     }
+    
+    protected function customerCart(){
+	    $viewmodel = new BookModel();
+	    $this->returnView($viewmodel->viewCart(), true);
+    }
+    
+    protected function completeOrder(){
+	    $viewmodel = new BookModel();
+	    $this->returnView($viewmodel-> finalizeOrder(), true);
+    }
+
+    protected function completeCart(){
+        $viewmodel = new BookModel();
+        $this->returnView($viewmodel-> finalizeCart(), true);
+    }
+
 }
